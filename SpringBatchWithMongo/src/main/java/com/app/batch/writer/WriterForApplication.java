@@ -4,12 +4,12 @@ import java.util.List;
 
 import org.springframework.batch.item.ItemWriter;
 
-import com.app.batch.bean.ApplicationBean;
+import com.app.batch.bean.PersonBean;
 
-public class WriterForApplication implements ItemWriter<ApplicationBean> {
+public class WriterForApplication implements ItemWriter<PersonBean> {
 
 	@Override
-	public void write(List<? extends ApplicationBean> items) throws Exception {
+	public void write(List<? extends PersonBean> items) throws Exception {
 		// TODO Auto-generated method stub
 
 	}

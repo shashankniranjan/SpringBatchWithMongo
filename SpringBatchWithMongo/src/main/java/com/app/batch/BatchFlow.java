@@ -11,7 +11,7 @@ import org.springframework.batch.item.ItemWriter;
 
 import org.springframework.context.annotation.Bean;
 
-import com.app.batch.bean.ApplicationBean;
+import com.app.batch.bean.PersonBean;
 import com.app.batch.processor.ProcessorForApplication;
 import com.app.batch.reader.ReaderForApplication;
 import com.app.batch.writer.WriterForApplication;
@@ -28,19 +28,19 @@ public class BatchFlow {
 
 	@Bean
 	public Step applicationStep(StepBuilderFactory stepBuilderFactory) {
-		return stepBuilderFactory.get("step").allowStartIfComplete(true).<ApplicationBean, ApplicationBean>chunk(1)
+		return stepBuilderFactory.get("step").allowStartIfComplete(true).<PersonBean, PersonBean>chunk(1)
 				.reader(reader()).processor(processor()).writer(writer()).build();
 	}
 
-	private ItemWriter<ApplicationBean> writer() {
+	private ItemWriter<PersonBean> writer() {
 		return new WriterForApplication();
 	}
 
-	private ItemProcessor<ApplicationBean, ApplicationBean> processor() {
+	private ItemProcessor<PersonBean, PersonBean> processor() {
 		return  new ProcessorForApplication();
 	}
 
-	private ItemReader<ApplicationBean> reader() {
+	private ItemReader<PersonBean> reader() {
 		return new ReaderForApplication();
 	}
 
